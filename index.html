@@ -16,6 +16,7 @@
             line-height: 1.6;
             color: #e4e4e7;
             background: #0a0a0f;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -136,12 +137,22 @@
 
         .stat-item {
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-item:hover .stat-number {
+            transform: scale(1.1);
         }
 
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
             color: #22c55e;
+            transition: transform 0.3s ease;
         }
 
         .stat-label {
@@ -249,9 +260,14 @@
             transform: scaleX(1);
         }
 
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
         .project-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
         .project-card h3 {
@@ -316,6 +332,10 @@
             transform: translateY(-3px);
         }
 
+        .skill-category:hover h3 {
+            transform: translateX(5px);
+        }
+
         .skill-category h3 {
             color: #22c55e;
             margin-bottom: 20px;
@@ -323,6 +343,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: transform 0.3s ease;
         }
 
         .skill-category ul {
@@ -428,6 +449,10 @@
             box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
         }
 
+        .publication-card:hover .publication-badge {
+            transform: scale(1.05);
+        }
+
         .publication-badge {
             display: inline-block;
             padding: 6px 15px;
@@ -438,6 +463,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 15px;
+            transition: transform 0.3s ease;
         }
 
         .publication-card h3 {
@@ -453,45 +479,213 @@
         }
 
         /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        #contact {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-card {
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+        }
+
+        .contact-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-header {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            padding: 50px 40px;
+            text-align: center;
+            color: #0a0a0f;
+        }
+
+        .contact-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #0a0a0f;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .contact-content {
+            padding: 50px 40px;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(34, 197, 94, 0.05);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-method:hover {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            transform: translateX(5px);
+        }
+
+        #phoneCard {
+            cursor: pointer;
+        }
+
+        #phoneCard:hover #phoneDisplay {
+            color: #22c55e;
+        }
+
+        .contact-method-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-method-info h4 {
+            color: #e4e4e7;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-method-info a,
+        .contact-method-info p {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .contact-method-info a:hover {
+            color: #22c55e;
+        }
+
+        .contact-cta {
+            text-align: center;
+            padding: 40px;
+            background: rgba(34, 197, 94, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .contact-cta h3 {
+            color: #e4e4e7;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-cta p {
+            color: #a1a1aa;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #22c55e;
+            color: #22c55e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-btn:hover {
+            background: #22c55e;
+            color: #0a0a0f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .education-card {
             background: #18181b;
             border: 1px solid #27272a;
             border-radius: 12px;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
-        .contact-card:hover {
+        .education-card:hover {
             border-color: #22c55e;
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
         }
 
-        .contact-icon {
-            font-size: 2.5rem;
+        .education-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover .education-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .education-card h3 {
+            color: #e4e4e7;
+            font-size: 1.4rem;
             margin-bottom: 15px;
         }
 
-        .contact-card h3 {
-            color: #e4e4e7;
-            margin-bottom: 10px;
-        }
-
-        .contact-card a {
+        .education-card .institution {
             color: #22c55e;
-            text-decoration: none;
-            word-break: break-all;
-        }
-
-        .contact-card a:hover {
-            text-decoration: underline;
+            font-size: 1.1rem;
+            font-weight: 600;
         }
 
         /* Footer */
@@ -550,8 +744,9 @@
             <ul>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#publications">Publications</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
@@ -791,10 +986,43 @@
                     <div class="company">Raptor Interactive</div>
                     <div class="date">March 2015 - April 2017</div>
                     <ul>
-                        <li>Tested mobile games for gameplay flow and monetization features</li>
-                        <li>Automated smoke tests and device-compatibility checks using Appium</li>
-                        <li>Discovered critical monetization defect pre-launch, protecting revenue</li>
+                        <li>Tested mobile games for gameplay flow, monetization, and network stability</li>
+                        <li>Used Appium to automate key smoke tests and device-compatibility checks</li>
+                        <li>Debugged purchase flows and ad network issues using Charles Proxy and Xcode</li>
+                        <li>Discovered a critical monetization defect pre-launch, protecting revenue</li>
                     </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Jr QA Tester</h3>
+                    <div class="company">SATISTRUM</div>
+                    <div class="date">January 2014 - February 2015</div>
+                    <ul>
+                        <li>Tested early-stage Android and web applications and documented defects in Jira</li>
+                        <li>Proposed automation for repetitive regression scenarios to improve team efficiency</li>
+                        <li>Recommendation was adopted as part of the team's regular workflow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic foundation in Computer Science</p>
+            
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-icon">🎓</div>
+                    <h3>Master of Computer Science</h3>
+                    <p class="institution">Technische Universität Berlin</p>
+                </div>
+                <div class="education-card">
+                    <div class="education-icon">🎓</div>
+                    <h3>Bachelor of Computer Science</h3>
+                    <p class="institution">National College of Business Administration & Economics</p>
                 </div>
             </div>
         </div>
@@ -831,38 +1059,54 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Open to new opportunities and collaborations</p>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:syeddanishdev@gmail.com">syeddanishdev@gmail.com</a>
+            <div class="contact-wrapper">
+                <div class="contact-header">
+                    <h2>Let's Work Together</h2>
+                    <p>Available for QA Engineering opportunities and collaborations</p>
                 </div>
+                
+                <div class="contact-content">
+                    <div class="contact-methods">
+                        <a href="mailto:syeddanishdev@gmail.com" class="contact-method">
+                            <div class="contact-method-icon">📧</div>
+                            <div class="contact-method-info">
+                                <h4>Email</h4>
+                                <p>syeddanishdev [at] gmail [dot] com</p>
+                            </div>
+                        </a>
 
-                <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <h3>Phone</h3>
-                    <a href="tel:+16478339990">(647) 833-9990</a>
-                </div>
+                        <div class="contact-method" id="phoneCard">
+                            <div class="contact-method-icon">📱</div>
+                            <div class="contact-method-info">
+                                <h4>Phone</h4>
+                                <p id="phoneDisplay">Click to reveal</p>
+                            </div>
+                        </div>
 
-                <div class="contact-card">
-                    <div class="contact-icon">💻</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/syeddanishdev" target="_blank">@syeddanishdev</a>
-                </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">📍</div>
+                            <div class="contact-method-info">
+                                <h4>Location</h4>
+                                <p>Pickering, ON, Canada</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/syeddanishdev/" target="_blank">@syeddanishdev</a>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-icon">📍</div>
-                    <h3>Location</h3>
-                    <p>Pickering, ON, Canada</p>
+                    <div class="contact-cta">
+                        <h3>Connect With Me</h3>
+                        <p>Follow my work and let's connect on professional networks</p>
+                        <div class="social-links">
+                            <a href="./DanishAli_Resume.pdf" id="downloadResume" class="social-btn">
+                                📄 Download Resume
+                            </a>
+                            <a href="https://www.linkedin.com/in/syeddanishdev/" target="_blank" class="social-btn">
+                                💼 LinkedIn
+                            </a>
+                            <a href="https://github.com/syeddanishdev" target="_blank" class="social-btn">
+                                💻 GitHub
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -875,5 +1119,36 @@
             <p style="margin-top: 10px;">QA Engineer | Test Automation Specialist</p>
         </div>
     </footer>
+
+    <script>
+        // Phone number reveal (anti-spam)
+        document.getElementById('phoneCard').addEventListener('click', function() {
+            const phoneDisplay = document.getElementById('phoneDisplay');
+            const phoneNumber = String.fromCharCode(40, 54, 52, 55, 41, 32, 56, 51, 51, 45, 57, 57, 57, 48);
+            
+            if (phoneDisplay.textContent === 'Click to reveal') {
+                phoneDisplay.textContent = phoneNumber;
+                phoneDisplay.style.color = '#22c55e';
+                this.style.cursor = 'default';
+                
+                // Make it clickable after reveal
+                setTimeout(() => {
+                    const phoneLink = document.createElement('a');
+                    phoneLink.href = 'tel:+16478339990';
+                    phoneLink.textContent = phoneNumber;
+                    phoneLink.style.color = '#22c55e';
+                    phoneLink.style.textDecoration = 'none';
+                    phoneDisplay.innerHTML = '';
+                    phoneDisplay.appendChild(phoneLink);
+                }, 100);
+            }
+        });
+
+        // Download Resume functionality
+        document.getElementById('downloadResume').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('To add resume download:\n\n1. Upload your resume PDF to your GitHub repository\n2. Replace the # in the href with: "./your-resume.pdf"\n\nFor example: href="./DanishAli_Resume.pdf"');
+        });
+    </script>
 </body>
 </html>
