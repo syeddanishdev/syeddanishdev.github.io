@@ -3,7 +3,7 @@
 Toronto (GTA) • 📧 syeddanishdev@gmail.com  
 [linkedin.com/in/syeddanishdev](https://linkedin.com/in/syeddanishdev) • [github.com/syeddanishdev](https://github.com/syeddanishdev)
 
-Download PDF → [Danish-Ali-Resume.pdf](./Danish-Ali-Resume.pdf)
+Download PDF → [Danish-Ali-Resume.pdf](./DanishAli_Resume.pdf)
 
 ![Profile views](https://komarev.com/ghpvc/?username=syeddanishdev&color=brightgreen)
 ### Professional Summary
