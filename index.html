@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danish Ali | QA Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #e4e4e7;
+            background: #0a0a0f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e4e4e7;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #22c55e;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 50px;
+            color: #22c55e;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #a1a1aa;
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        .stat-label {
+            color: #71717a;
+            font-size: 0.9rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #22c55e;
+            color: #0a0a0f;
+        }
+
+        .btn-primary:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #22c55e;
+            border: 2px solid #22c55e;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #e4e4e7;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: #71717a;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #22c55e, #10b981);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .project-card h3 {
+            color: #e4e4e7;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #a1a1aa;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #22c55e;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #22c55e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: #22c55e;
+            transform: translateY(-3px);
+        }
+
+        .skill-category h3 {
+            color: #22c55e;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            color: #a1a1aa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #22c55e, transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #0a0a0f, 0 0 0 6px #22c55e;
+        }
+
+        .timeline-item h3 {
+            color: #e4e4e7;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .company {
+            color: #22c55e;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #71717a;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            margin-left: 20px;
+            color: #a1a1aa;
+        }
+
+        .timeline-item li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* Publications Section */
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-card {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-left: 4px solid #22c55e;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            border-color: #22c55e;
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .publication-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 5px;
+            color: #22c55e;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .publication-card h3 {
+            color: #e4e4e7;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .publication-card p {
+            color: #a1a1aa;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: #18181b;
+            border: 1px solid #27272a;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            color: #e4e4e7;
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: #22c55e;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #18181b;
+            border-top: 1px solid #27272a;
+            text-align: center;
+            padding: 40px 0;
+            color: #71717a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #e4e4e7;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Danish Ali</div>
+            <ul>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">✓ Available for Opportunities</div>
+                <h1>Danish Ali</h1>
+                <p class="tagline">QA Engineer | Test Automation Specialist</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">IEEE Publications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Issue Reduction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Faster Testing</div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="https://github.com/syeddanishdev" target="_blank" class="btn btn-secondary">View GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Open-source testing frameworks and automation demonstrations</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🤖</div>
+                    <h3>AI Playwright Demo</h3>
+                    <p>Modern test automation framework leveraging Playwright with AI-powered test generation and execution capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">Playwright</span>
+                        <span class="tag">AI Testing</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <a href="https://github.com/syeddanishdev/ai-playwright-demo" target="_blank" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">✨</div>
+                    <h3>AI Playwright GenAI</h3>
+                    <p>Advanced GenAI-powered test automation showcasing LLM-based test case generation and intelligent test data creation.</p>
+                    <div class="project-tags">
+                        <span class="tag">GenAI</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Playwright</span>
+                    </div>
+                    <a href="https://github.com/syeddanishdev/ai-playwright-genAI" target="_blank" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📋</div>
+                    <h3>Manual Testing QA</h3>
+                    <p>Comprehensive manual testing repository with test cases, checklists, and QA best practices documentation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Manual Testing</span>
+                        <span class="tag">Test Cases</span>
+                        <span class="tag">QA Processes</span>
+                    </div>
+                    <a href="https://github.com/syeddanishdev/Manual-Testing-QA" target="_blank" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🔌</div>
+                    <h3>ReqRes API Testing</h3>
+                    <p>RESTful API testing framework demonstrating comprehensive API validation, integration testing, and automation patterns.</p>
+                    <div class="project-tags">
+                        <span class="tag">API Testing</span>
+                        <span class="tag">REST</span>
+                        <span class="tag">Postman</span>
+                    </div>
+                    <a href="https://github.com/syeddanishdev/reqres-api-testing-demo" target="_blank" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">⚙️</div>
+                    <h3>TestRail QA Setup</h3>
+                    <p>Complete TestRail configuration and integration guide for test management and reporting workflows.</p>
+                    <div class="project-tags">
+                        <span class="tag">TestRail</span>
+                        <span class="tag">Test Management</span>
+                        <span class="tag">CI/CD</span>
+                    </div>
+                    <a href="https://github.com/syeddanishdev/TestRail-QA-Setup" target="_blank" class="project-link">
+                        View Project →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">Comprehensive skill set across testing, automation, and quality assurance</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🧪 Testing</h3>
+                    <ul>
+                        <li>Manual & Regression Testing</li>
+                        <li>Exploratory Testing</li>
+                        <li>Functional & Integration</li>
+                        <li>UAT & Root Cause Analysis</li>
+                        <li>Accessibility Testing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 AI & GenAI</h3>
+                    <ul>
+                        <li>AI-generated test cases</li>
+                        <li>LLM test data creation</li>
+                        <li>AI defect analysis</li>
+                        <li>AI user simulation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>⚡ Automation</h3>
+                    <ul>
+                        <li>Playwright</li>
+                        <li>Selenium & Appium</li>
+                        <li>End-to-End Testing</li>
+                        <li>Page Object Model</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔌 API & Performance</h3>
+                    <ul>
+                        <li>REST & GraphQL</li>
+                        <li>Postman & SoapUI</li>
+                        <li>Load & Stress Testing</li>
+                        <li>Performance Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛠️ Tools</h3>
+                    <ul>
+                        <li>Jira & TestRail</li>
+                        <li>Charles Proxy & Xcode</li>
+                        <li>Jenkins & GitHub Actions</li>
+                        <li>GitLab CI/CD</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📊 Methodology</h3>
+                    <ul>
+                        <li>Agile & Scrum</li>
+                        <li>CI/CD Integration</li>
+                        <li>Shift-left Testing</li>
+                        <li>Test Documentation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">8+ years building quality into software products</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>QA Engineer</h3>
+                    <div class="company">ServiceTitan Technologies</div>
+                    <div class="date">March 2024 - Present</div>
+                    <ul>
+                        <li>Execute functional and regression testing for web and mobile modules using POM approach</li>
+                        <li>Develop Playwright automation integrated with GitHub Actions CI/CD and AI testing</li>
+                        <li>Validate APIs and third-party integrations for accurate data flow</li>
+                        <li>Reduced post-release issues by 25% and improved deployment consistency</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>QA Engineer</h3>
+                    <div class="company">Unity Technologies</div>
+                    <div class="date">June 2021 - March 2024</div>
+                    <ul>
+                        <li>Executed comprehensive testing for Unity Play, Struckd Web, and Struckd Mobile</li>
+                        <li>Designed and maintained automated test scripts using Playwright</li>
+                        <li>Conducted performance analysis with Unity Profiler, identifying critical bottlenecks</li>
+                        <li>Strengthened release quality by detecting critical issues early in development</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>QA Tester</h3>
+                    <div class="company">T-Mobile Telekom Innovation Lab</div>
+                    <div class="date">October 2018 - May 2021</div>
+                    <ul>
+                        <li>Tested mobile apps and VR/AR prototypes with structured test plans</li>
+                        <li>Automated core scenarios for improved repeatability and efficiency</li>
+                        <li>Reduced regression effort by 50% through early automation adoption</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>QA Analyst</h3>
+                    <div class="company">Raptor Interactive</div>
+                    <div class="date">March 2015 - April 2017</div>
+                    <ul>
+                        <li>Tested mobile games for gameplay flow and monetization features</li>
+                        <li>Automated smoke tests and device-compatibility checks using Appium</li>
+                        <li>Discovered critical monetization defect pre-launch, protecting revenue</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Research & Publications</h2>
+            <p class="section-subtitle">Published research in Virtual Reality and User Experience</p>
+            
+            <div class="publications-list">
+                <div class="publication-card">
+                    <div class="publication-badge">QoMEX 2020 – IEEE</div>
+                    <h3>Influence of Hand Tracking as a way of Interaction in Virtual Reality on User Experience</h3>
+                    <p>Research exploring the impact of hand tracking interactions on user experience in VR environments, contributing to the understanding of natural interface design in immersive systems.</p>
+                </div>
+
+                <div class="publication-card">
+                    <div class="publication-badge">QoMEX 2020 – IEEE</div>
+                    <h3>Comparing emotional states induced by 360° videos via HMD vs screen</h3>
+                    <p>Comparative study analyzing emotional responses between Head-Mounted Display and traditional screen viewing of 360° content, providing insights for immersive media design.</p>
+                </div>
+
+                <div class="publication-card">
+                    <div class="publication-badge">QoMEX 2020 – IEEE</div>
+                    <h3>User Experience of Reading in Virtual Reality – Text Distance, Size and Contrast</h3>
+                    <p>Investigation of optimal text rendering parameters in VR environments, examining readability factors critical for comfortable extended reading experiences in virtual spaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Open to new opportunities and collaborations</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:syeddanishdev@gmail.com">syeddanishdev@gmail.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+16478339990">(647) 833-9990</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/syeddanishdev" target="_blank">@syeddanishdev</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Pickering, ON, Canada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Danish Ali. All rights reserved.</p>
+            <p style="margin-top: 10px;">QA Engineer | Test Automation Specialist</p>
+        </div>
+    </footer>
+</body>
+</html>
