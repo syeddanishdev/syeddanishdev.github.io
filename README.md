@@ -1,3 +1,4 @@
+
 # Danish Ali 
 **Senior QA Automation Engineer | AI-Powered Testing Specialist**  
 Toronto (GTA) • 📧 syeddanishdev@gmail.com  
