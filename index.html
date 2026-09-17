@@ -1005,14 +1005,24 @@
                     <div class="project-icon">✨</div>
                     <h3>AI Playwright GenAI</h3>
                     <p>Advanced GenAI-powered test automation showcasing LLM-based test case generation and intelligent test data creation.</p>
+                    <p>
+                        <a href="https://github.com/syeddanishdev/ai-playwright-genAI/actions/workflows/playwright.yml" target="_blank">
+                            <img src="https://github.com/syeddanishdev/ai-playwright-genAI/actions/workflows/playwright.yml/badge.svg" alt="Playwright Tests CI status">
+                        </a>
+                    </p>
                     <div class="project-tags">
                         <span class="tag">GenAI</span>
                         <span class="tag">LLM</span>
                         <span class="tag">Playwright</span>
                     </div>
-                    <a href="https://github.com/syeddanishdev/ai-playwright-genAI" target="_blank" class="project-link">
-                        View Project →
-                    </a>
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: flex-start;">
+                        <a href="https://github.com/syeddanishdev/ai-playwright-genAI" target="_blank" class="project-link">
+                            View Project →
+                        </a>
+                        <a href="https://syeddanishdev.github.io/ai-playwright-genAI/" target="_blank" class="project-link">
+                            View Live Test Report →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="project-card">
@@ -1062,8 +1072,8 @@
                 <div class="project-icon">📈</div>
                 <h3>Case Study: AI Playwright GenAI</h3>
                 <p><strong>Problem:</strong> Hand-writing and maintaining Playwright scripts for every new scenario slows down regression coverage as a product grows.</p>
-                <p><strong>Approach:</strong> Built an open-source tool that takes a plain-English scenario ("As a user, I want to log in with valid credentials") and uses Google Gemini to generate a runnable TypeScript Playwright test, including selectors, navigation, and assertions.</p>
-                <p><strong>Result:</strong> New scenarios go from spec to a running test in minutes instead of hand-writing boilerplate. <em>(Swap in a real before/after time or defect metric here once you've measured one on a live suite.)</em></p>
+                <p><strong>Approach:</strong> Built an open-source tool that takes a plain-English scenario ("As a user, I want to log in with valid credentials") and uses Google Gemini to generate a runnable JavaScript Playwright test, including selectors, navigation, and assertions.</p>
+                <p><strong>Result:</strong> New scenarios go from spec to a running test in minutes instead of hand-writing boilerplate. Generated output is kept honest with a two-track CI setup: a reviewed example runs on every push with a <a href="https://syeddanishdev.github.io/ai-playwright-genAI/" target="_blank" style="color: var(--accent-text);">live public report</a>, while raw, unreviewed Gemini output only runs as an opt-in manual job — so the badge never reflects code nobody's looked at.</p>
                 <a href="https://github.com/syeddanishdev/ai-playwright-genAI" target="_blank" class="project-link">
                     View source →
                 </a>
