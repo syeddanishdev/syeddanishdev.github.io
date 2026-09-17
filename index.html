@@ -10,6 +10,31 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://syeddanishdev.github.io/">
     <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0f'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='800' fill='%2322c55e' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Danish Ali",
+        "jobTitle": "QA Engineer",
+        "url": "https://syeddanishdev.github.io/",
+        "email": "mailto:syeddanishdev@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Pickering",
+            "addressRegion": "ON",
+            "addressCountry": "CA"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/syeddanishdev/",
+            "https://github.com/syeddanishdev"
+        ],
+        "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "Technische Universität Berlin" },
+            { "@type": "CollegeOrUniversity", "name": "National College of Business Administration & Economics" }
+        ]
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -17,12 +42,44 @@
             box-sizing: border-box;
         }
 
+        :root,
+        body {
+            --bg: #0a0a0f;
+            --bg-alt: #1a1a2e;
+            --surface: #18181b;
+            --border: #27272a;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --text-muted: #8a8a94;
+            --accent: #22c55e;
+            --accent-alt: #10b981;
+            --accent-text: #22c55e;
+            --nav-bg: rgba(10, 10, 15, 0.95);
+            --nav-bg-mobile: rgba(10, 10, 15, 0.98);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        body[data-theme="light"] {
+            --bg: #f8fafc;
+            --bg-alt: #e2e8f0;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --text-primary: #18181b;
+            --text-secondary: #3f3f46;
+            --text-muted: #52525b;
+            --accent-text: #15803d;
+            --nav-bg: rgba(248, 250, 252, 0.95);
+            --nav-bg-mobile: rgba(248, 250, 252, 0.98);
+            --shadow-color: rgba(0, 0, 0, 0.12);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #e4e4e7;
-            background: #0a0a0f;
+            color: var(--text-primary);
+            background: var(--bg);
             scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -36,7 +93,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 15, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(34, 197, 94, 0.1);
@@ -52,7 +109,13 @@
         nav .logo {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #22c55e;
+            color: var(--accent-text);
+        }
+
+        nav .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         nav ul {
@@ -62,14 +125,23 @@
         }
 
         nav a {
-            color: #e4e4e7;
+            color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 500;
         }
 
         nav a:hover {
-            color: #22c55e;
+            color: var(--accent-text);
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            line-height: 1;
         }
 
         /* Hero Section */
@@ -78,7 +150,7 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -90,7 +162,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
@@ -112,7 +184,7 @@
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 50px;
-            color: #22c55e;
+            color: var(--accent-text);
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 20px;
@@ -122,15 +194,21 @@
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-alt) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
+        body[data-theme="light"] .hero h1 {
+            background: linear-gradient(135deg, #15803d 0%, #047857 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
         .hero .tagline {
             font-size: 1.5rem;
-            color: #a1a1aa;
+            color: var(--text-secondary);
             margin-bottom: 30px;
         }
 
@@ -157,12 +235,12 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: #22c55e;
+            color: var(--accent-text);
             transition: transform 0.3s ease;
         }
 
         .stat-label {
-            color: #71717a;
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
 
@@ -187,7 +265,7 @@
         }
 
         .btn-primary {
-            background: #22c55e;
+            background: var(--accent);
             color: #0a0a0f;
         }
 
@@ -199,8 +277,8 @@
 
         .btn-secondary {
             background: transparent;
-            color: #22c55e;
-            border: 2px solid #22c55e;
+            color: var(--accent-text);
+            border: 2px solid var(--accent);
         }
 
         .btn-secondary:hover {
@@ -216,12 +294,12 @@
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-weight: 700;
         }
 
         .section-subtitle {
-            color: #71717a;
+            color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 60px;
             max-width: 600px;
@@ -235,8 +313,8 @@
         }
 
         .project-card {
-            background: #18181b;
-            border: 1px solid #27272a;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 30px;
             transition: all 0.3s ease;
@@ -257,7 +335,7 @@
         }
 
         .project-card:hover {
-            border-color: #22c55e;
+            border-color: var(--accent);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
         }
@@ -277,15 +355,19 @@
         }
 
         .project-card h3 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.4rem;
             margin-bottom: 15px;
         }
 
         .project-card p {
-            color: #a1a1aa;
+            color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.7;
+        }
+
+        .project-card p + p {
+            margin-top: -10px;
         }
 
         .project-tags {
@@ -301,14 +383,14 @@
             border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 5px;
             font-size: 0.85rem;
-            color: #22c55e;
+            color: var(--accent-text);
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #22c55e;
+            color: var(--accent-text);
             text-decoration: none;
             font-weight: 600;
             transition: gap 0.3s ease;
@@ -316,6 +398,11 @@
 
         .project-link:hover {
             gap: 12px;
+        }
+
+        .case-study-card {
+            margin-top: 30px;
+            max-width: 800px;
         }
 
         /* Skills Grid */
@@ -326,15 +413,15 @@
         }
 
         .skill-category {
-            background: #18181b;
-            border: 1px solid #27272a;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 30px;
             transition: all 0.3s ease;
         }
 
         .skill-category:hover {
-            border-color: #22c55e;
+            border-color: var(--accent);
             transform: translateY(-3px);
         }
 
@@ -343,7 +430,7 @@
         }
 
         .skill-category h3 {
-            color: #22c55e;
+            color: var(--accent-text);
             margin-bottom: 20px;
             font-size: 1.2rem;
             display: flex;
@@ -358,7 +445,7 @@
 
         .skill-category li {
             padding: 8px 0;
-            color: #a1a1aa;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -366,7 +453,7 @@
 
         .skill-category li::before {
             content: '▸';
-            color: #22c55e;
+            color: var(--accent-text);
             font-weight: bold;
         }
 
@@ -383,7 +470,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(180deg, #22c55e, transparent);
+            background: linear-gradient(180deg, var(--accent), transparent);
         }
 
         .timeline-item {
@@ -399,33 +486,33 @@
             top: 0;
             width: 14px;
             height: 14px;
-            background: #22c55e;
+            background: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 0 4px #0a0a0f, 0 0 0 6px #22c55e;
+            box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--accent);
         }
 
         .timeline-item h3 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.5rem;
             margin-bottom: 5px;
         }
 
         .timeline-item .company {
-            color: #22c55e;
+            color: var(--accent-text);
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .timeline-item .date {
-            color: #71717a;
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
         .timeline-item ul {
             margin-left: 20px;
-            color: #a1a1aa;
+            color: var(--text-secondary);
         }
 
         .timeline-item li {
@@ -440,9 +527,9 @@
         }
 
         .publication-card {
-            background: #18181b;
-            border: 1px solid #27272a;
-            border-left: 4px solid #22c55e;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 25px;
@@ -450,7 +537,7 @@
         }
 
         .publication-card:hover {
-            border-color: #22c55e;
+            border-color: var(--accent);
             transform: translateX(5px);
             box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
         }
@@ -465,7 +552,7 @@
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 5px;
-            color: #22c55e;
+            color: var(--accent-text);
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 15px;
@@ -473,20 +560,26 @@
         }
 
         .publication-card h3 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.3rem;
             margin-bottom: 15px;
             line-height: 1.4;
         }
 
         .publication-card p {
-            color: #a1a1aa;
+            color: var(--text-secondary);
             line-height: 1.7;
+        }
+
+        /* Now Section */
+        .now-card {
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* Contact Section */
         #contact {
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -498,7 +591,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 30% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 50%),
                 radial-gradient(circle at 70% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
         }
@@ -508,11 +601,11 @@
             z-index: 1;
             max-width: 1000px;
             margin: 0 auto;
-            background: #18181b;
-            border: 1px solid #27272a;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px var(--shadow-color);
         }
 
         .contact-header {
@@ -558,7 +651,7 @@
 
         .contact-method:hover {
             background: rgba(34, 197, 94, 0.1);
-            border-color: #22c55e;
+            border-color: var(--accent);
             transform: translateX(5px);
         }
 
@@ -567,7 +660,12 @@
         }
 
         #phoneCard:hover #phoneDisplay {
-            color: #22c55e;
+            color: var(--accent-text);
+        }
+
+        #phoneCard:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
         }
 
         .contact-method-icon {
@@ -583,7 +681,7 @@
         }
 
         .contact-method-info h4 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             margin-bottom: 5px;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -592,13 +690,13 @@
 
         .contact-method-info a,
         .contact-method-info p {
-            color: #a1a1aa;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 1rem;
         }
 
         .contact-method-info a:hover {
-            color: #22c55e;
+            color: var(--accent-text);
         }
 
         .contact-cta {
@@ -610,13 +708,13 @@
         }
 
         .contact-cta h3 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
 
         .contact-cta p {
-            color: #a1a1aa;
+            color: var(--text-secondary);
             margin-bottom: 25px;
         }
 
@@ -630,8 +728,8 @@
         .social-btn {
             padding: 12px 30px;
             background: transparent;
-            border: 2px solid #22c55e;
-            color: #22c55e;
+            border: 2px solid var(--accent);
+            color: var(--accent-text);
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
@@ -642,7 +740,7 @@
         }
 
         .social-btn:hover {
-            background: #22c55e;
+            background: var(--accent);
             color: #0a0a0f;
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
@@ -658,8 +756,8 @@
         }
 
         .education-card {
-            background: #18181b;
-            border: 1px solid #27272a;
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 40px;
             text-align: center;
@@ -667,7 +765,7 @@
         }
 
         .education-card:hover {
-            border-color: #22c55e;
+            border-color: var(--accent);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
         }
@@ -683,24 +781,24 @@
         }
 
         .education-card h3 {
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.4rem;
             margin-bottom: 15px;
         }
 
         .education-card .institution {
-            color: #22c55e;
+            color: var(--accent-text);
             font-size: 1.1rem;
             font-weight: 600;
         }
 
         /* Footer */
         footer {
-            background: #18181b;
-            border-top: 1px solid #27272a;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
             text-align: center;
             padding: 40px 0;
-            color: #71717a;
+            color: var(--text-muted);
         }
 
         /* Mobile Menu */
@@ -708,7 +806,7 @@
             display: none;
             background: none;
             border: none;
-            color: #e4e4e7;
+            color: var(--text-primary);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -723,7 +821,7 @@
                 right: 0;
                 flex-direction: column;
                 gap: 0;
-                background: rgba(10, 10, 15, 0.98);
+                background: var(--nav-bg-mobile);
                 border-bottom: 1px solid rgba(34, 197, 94, 0.1);
             }
 
@@ -757,6 +855,49 @@
                 gap: 20px;
             }
         }
+
+        /* Print */
+        @media print {
+            nav, .mobile-menu-btn, .theme-toggle-btn, .cta-buttons, .social-links,
+            .hero-badge, .hero::before, #contact::before {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+                color: #000;
+            }
+
+            .hero, section, #contact {
+                background: #fff !important;
+                padding: 20px 0;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                background: none !important;
+                -webkit-text-fill-color: #000 !important;
+                color: #000;
+            }
+
+            .section-title, .timeline-item h3, .project-card h3,
+            .skill-category h3, .education-card h3, .publication-card h3,
+            .contact-cta h3 {
+                color: #000 !important;
+            }
+
+            .project-card, .skill-category, .education-card,
+            .publication-card, .contact-wrapper {
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
+
+            a {
+                color: #000 !important;
+                text-decoration: underline;
+            }
+        }
     </style>
 </head>
 <body>
@@ -764,15 +905,19 @@
     <nav>
         <div class="container">
             <div class="logo">Danish Ali</div>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#now">Now</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Switch to light theme">🌙</button>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+            </div>
         </div>
     </nav>
 
@@ -783,7 +928,7 @@
                 <div class="hero-badge">✓ Available for Opportunities</div>
                 <h1>Danish Ali</h1>
                 <p class="tagline">QA Engineer | Test Automation Specialist</p>
-                
+
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">8+</div>
@@ -811,12 +956,26 @@
         </div>
     </div>
 
+    <!-- Now Section -->
+    <section id="now">
+        <div class="container">
+            <h2 class="section-title">Now</h2>
+            <p class="section-subtitle">What I'm currently exploring</p>
+
+            <div class="project-card now-card">
+                <div class="project-icon">🔭</div>
+                <h3>AI-agent-based test authoring</h3>
+                <p>Exploring how LLM-driven agents can turn plain-English acceptance criteria into maintainable Playwright suites, and experimenting with self-healing selectors so tests survive routine UI changes.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Open-source testing frameworks and automation demonstrations</p>
-            
+
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">🤖</div>
@@ -888,6 +1047,17 @@
                     </a>
                 </div>
             </div>
+
+            <div class="project-card case-study-card">
+                <div class="project-icon">📈</div>
+                <h3>Case Study: AI Playwright GenAI</h3>
+                <p><strong>Problem:</strong> Hand-writing and maintaining Playwright scripts for every new scenario slows down regression coverage as a product grows.</p>
+                <p><strong>Approach:</strong> Built an open-source tool that takes a plain-English scenario ("As a user, I want to log in with valid credentials") and uses Google Gemini to generate a runnable TypeScript Playwright test, including selectors, navigation, and assertions.</p>
+                <p><strong>Result:</strong> New scenarios go from spec to a running test in minutes instead of hand-writing boilerplate. <em>(Swap in a real before/after time or defect metric here once you've measured one on a live suite.)</em></p>
+                <a href="https://github.com/syeddanishdev/ai-playwright-genAI" target="_blank" class="project-link">
+                    View source →
+                </a>
+            </div>
         </div>
     </section>
 
@@ -896,7 +1066,7 @@
         <div class="container">
             <h2 class="section-title">Technical Expertise</h2>
             <p class="section-subtitle">Comprehensive skill set across testing, automation, and quality assurance</p>
-            
+
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>🧪 Testing</h3>
@@ -967,7 +1137,7 @@
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
             <p class="section-subtitle">8+ years building quality into software products</p>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <h3>QA Engineer</h3>
@@ -1035,7 +1205,7 @@
         <div class="container">
             <h2 class="section-title">Education</h2>
             <p class="section-subtitle">Academic foundation in Computer Science</p>
-            
+
             <div class="education-grid">
                 <div class="education-card">
                     <div class="education-icon">🎓</div>
@@ -1056,7 +1226,7 @@
         <div class="container">
             <h2 class="section-title">Research & Publications</h2>
             <p class="section-subtitle">Published research in Virtual Reality and User Experience</p>
-            
+
             <div class="publications-list">
                 <div class="publication-card">
                     <div class="publication-badge">QoMEX 2020 – IEEE</div>
@@ -1087,7 +1257,7 @@
                     <h2>Let's Work Together</h2>
                     <p>Available for QA Engineering opportunities and collaborations</p>
                 </div>
-                
+
                 <div class="contact-content">
                     <div class="contact-methods">
                         <a href="mailto:syeddanishdev@gmail.com" class="contact-method">
@@ -1098,7 +1268,7 @@
                             </div>
                         </a>
 
-                        <div class="contact-method" id="phoneCard">
+                        <div class="contact-method" id="phoneCard" role="button" tabindex="0" aria-label="Reveal phone number">
                             <div class="contact-method-icon">📱</div>
                             <div class="contact-method-info">
                                 <h4>Phone</h4>
@@ -1144,37 +1314,68 @@
     </footer>
 
     <script>
+        // Theme toggle (persisted)
+        var themeToggleBtn = document.getElementById('themeToggle');
+
+        function applyTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            themeToggleBtn.textContent = theme === 'light' ? '☀️' : '🌙';
+            themeToggleBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+        }
+
+        applyTheme(localStorage.getItem('theme') || 'dark');
+
+        themeToggleBtn.addEventListener('click', function() {
+            var next = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', next);
+            applyTheme(next);
+        });
+
         // Mobile nav toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('open');
+        var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        var navLinks = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            var isOpen = navLinks.classList.toggle('open');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
         });
 
         document.querySelectorAll('nav ul a').forEach(function(link) {
             link.addEventListener('click', function() {
-                document.querySelector('nav ul').classList.remove('open');
+                navLinks.classList.remove('open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Phone number reveal (anti-spam)
-        document.getElementById('phoneCard').addEventListener('click', function() {
-            const phoneDisplay = document.getElementById('phoneDisplay');
-            const phoneNumber = String.fromCharCode(40, 54, 52, 55, 41, 32, 56, 51, 51, 45, 57, 57, 57, 48);
-            
+        // Phone number reveal (anti-spam), keyboard accessible
+        var phoneCard = document.getElementById('phoneCard');
+
+        function revealPhone() {
+            var phoneDisplay = document.getElementById('phoneDisplay');
+            var phoneNumber = String.fromCharCode(40, 54, 52, 55, 41, 32, 56, 51, 51, 45, 57, 57, 57, 48);
+
             if (phoneDisplay.textContent === 'Click to reveal') {
                 phoneDisplay.textContent = phoneNumber;
-                phoneDisplay.style.color = '#22c55e';
-                this.style.cursor = 'default';
-                
-                // Make it clickable after reveal
-                setTimeout(() => {
-                    const phoneLink = document.createElement('a');
+                phoneDisplay.style.color = 'var(--accent-text)';
+                phoneCard.style.cursor = 'default';
+
+                setTimeout(function() {
+                    var phoneLink = document.createElement('a');
                     phoneLink.href = 'tel:+16478339990';
                     phoneLink.textContent = phoneNumber;
-                    phoneLink.style.color = '#22c55e';
+                    phoneLink.style.color = 'var(--accent-text)';
                     phoneLink.style.textDecoration = 'none';
                     phoneDisplay.innerHTML = '';
                     phoneDisplay.appendChild(phoneLink);
                 }, 100);
+            }
+        }
+
+        phoneCard.addEventListener('click', revealPhone);
+        phoneCard.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                revealPhone();
             }
         });
     </script>
