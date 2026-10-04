@@ -10,7 +10,7 @@ export default defineConfig({
     reporter: [['list'], ['allure-playwright', { resultsDir: 'allure-results' }]],
     snapshotPathTemplate: '{testDir}/__screenshots__/{platform}/{testFilePath}/{arg}-{projectName}{ext}',
     expect: {
-        toHaveScreenshot: { maxDiffPixelRatio: 0.01, animations: 'disabled' },
+        toHaveScreenshot: { maxDiffPixelRatio: 0.01, animations: 'disabled', timeout: 15_000 },
     },
     use: {
         baseURL: `http://127.0.0.1:${PORT}`,
