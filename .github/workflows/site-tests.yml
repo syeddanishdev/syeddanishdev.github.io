@@ -1,0 +1,102 @@
+name: Site tests
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    inputs:
+      update_snapshots:
+        description: Regenerate Linux visual baselines and commit them
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps chromium
+
+      - name: Update visual baselines
+        if: inputs.update_snapshots
+        run: |
+          npx playwright test tests/visual.spec.ts --update-snapshots
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add tests/__screenshots__/linux
+          git diff --cached --quiet || git commit -m "Update Linux visual baselines"
+          git push
+
+      - name: Run Playwright tests
+        id: tests
+        continue-on-error: true
+        run: npx playwright test
+
+      - name: Run Lighthouse CI
+        id: lighthouse
+        continue-on-error: true
+        run: npx lhci autorun
+
+      - name: Restore Allure history from the live site
+        if: ${{ !cancelled() }}
+        run: |
+          mkdir -p allure-results/history
+          for f in history.json history-trend.json duration-trend.json categories-trend.json retry-trend.json; do
+            curl -fsSL "https://syeddanishdev.github.io/report/history/$f" -o "allure-results/history/$f" || rm -f "allure-results/history/$f"
+          done
+
+      - name: Build site with reports
+        if: ${{ !cancelled() }}
+        run: |
+          mkdir -p _site
+          cp -R index.html DanishAli_Resume.pdf blog assets _site/
+          npx allure generate allure-results -o _site/report --clean
+          if [ -f lighthouse-report/manifest.json ]; then node scripts/lighthouse-index.mjs lighthouse-report _site/lighthouse; fi
+
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ !cancelled() }}
+        with:
+          path: _site
+
+      - name: Fail the run if tests or Lighthouse failed
+        if: steps.tests.outcome == 'failure' || steps.lighthouse.outcome == 'failure'
+        run: exit 1
+
+  deploy:
+    needs: test
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

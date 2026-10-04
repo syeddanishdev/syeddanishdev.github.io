@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --bg: #0a0a0f;
+    --surface: #18181b;
+    --border: #27272a;
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --text-muted: #8a8a94;
+    --accent: #22c55e;
+    --accent-text: #22c55e;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.75;
+    color: var(--text-primary);
+    background: var(--bg);
+}
+
+body[data-theme="light"] {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text-primary: #18181b;
+    --text-secondary: #3f3f46;
+    --text-muted: #52525b;
+    --accent-text: #15803d;
+}
+
+.wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.top-nav a {
+    color: var(--accent-text);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 44px 0 14px;
+}
+
+p, li {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+ul, ol {
+    padding-left: 24px;
+}
+
+a {
+    color: var(--accent-text);
+}
+
+strong {
+    color: var(--text-primary);
+}
+
+.meta {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+}
+
+pre {
+    background: #0d1117;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    margin: 0 0 20px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+code {
+    font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+p code, li code {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 0.88em;
+}
+
+.post-card {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.post-card:hover {
+    border-color: var(--accent);
+}
+
+.post-card h2 {
+    margin: 0 0 8px;
+    color: var(--text-primary);
+}
+
+.post-card p {
+    margin: 0;
+}
+
+.callout {
+    border-left: 4px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 0 0 20px;
+}
+
+.callout p {
+    margin: 0;
+}
+
+footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+th {
+    color: var(--text-primary);
+}

@@ -288,6 +288,268 @@
             transform: translateY(-2px);
         }
 
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+            gap: 50px;
+            align-items: center;
+        }
+
+        .site-tested {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .site-tested a {
+            color: var(--accent-text);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .site-tested a:hover {
+            text-decoration: underline;
+        }
+
+        .site-tested img {
+            display: block;
+        }
+
+        /* Hero terminal */
+        .terminal {
+            position: relative;
+            z-index: 1;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--shadow-color);
+            overflow: hidden;
+            font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot:nth-child(1) { background: #ff5f57; }
+        .terminal-dot:nth-child(2) { background: #febc2e; }
+        .terminal-dot:nth-child(3) { background: #28c840; }
+
+        .terminal-title {
+            margin-left: 8px;
+            color: #8b949e;
+            font-size: 0.8rem;
+        }
+
+        .terminal pre {
+            margin: 0;
+            padding: 20px;
+            min-height: 280px;
+            color: #c9d1d9;
+            font-family: inherit;
+            font-size: 0.85rem;
+            line-height: 1.75;
+            white-space: pre-wrap;
+        }
+
+        .terminal .t-line.t-hidden {
+            visibility: hidden;
+        }
+
+        .terminal .t-prompt { color: #8b949e; }
+        .terminal .t-cmd { color: #e6edf3; }
+        .terminal .t-pass { color: #3fb950; }
+        .terminal .t-dim { color: #8b949e; }
+        .terminal .t-summary { color: #3fb950; font-weight: 700; }
+
+        .terminal .t-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            vertical-align: text-bottom;
+            background: #3fb950;
+            animation: blink 1s steps(1) infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Live CI status */
+        .ci-status {
+            margin-bottom: 40px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 30px;
+        }
+
+        .ci-status h3 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .ci-status > p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .ci-status ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .ci-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .ci-row a {
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .ci-row a:hover {
+            color: var(--accent-text);
+        }
+
+        .ci-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .ci-pill {
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .ci-pill[data-state="passing"] {
+            color: var(--accent-text);
+            border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .ci-pill[data-state="failing"] {
+            color: #ef4444;
+            border-color: rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        body[data-theme="light"] .ci-pill[data-state="failing"] {
+            color: #b91c1c;
+        }
+
+        .ci-pill[data-state="running"] {
+            color: #d97706;
+            border-color: rgba(217, 119, 6, 0.4);
+            background: rgba(217, 119, 6, 0.1);
+        }
+
+        /* Bug hunt */
+        .bug-hunt-toggle {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1001;
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--accent);
+            background: var(--surface);
+            color: var(--accent-text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .bug-hunt-panel {
+            position: fixed;
+            right: 20px;
+            bottom: 74px;
+            z-index: 1001;
+            width: min(320px, calc(100vw - 40px));
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--accent);
+            background: var(--surface);
+            color: var(--text-secondary);
+            box-shadow: 0 20px 60px var(--shadow-color);
+            font-size: 0.9rem;
+        }
+
+        .bug-hunt-panel[hidden] {
+            display: none;
+        }
+
+        .bug-hunt-panel strong {
+            color: var(--text-primary);
+        }
+
+        .bug-hunt-panel .bug-count {
+            display: block;
+            margin: 8px 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-text);
+        }
+
+        .bug-hunt-panel a {
+            color: var(--accent-text);
+        }
+
+        body.bug-hunt [data-bug] {
+            cursor: crosshair;
+        }
+
+        body.bug-hunt [data-bug].bug-found {
+            outline: 2px dashed var(--accent);
+            outline-offset: 4px;
+            cursor: default;
+        }
+
+        body.bug-hunt .bug-tilt {
+            transform: rotate(-2deg) translateY(3px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
         /* Section Styles */
         section {
             padding: 100px 0;
@@ -803,6 +1065,10 @@
             margin: 40px auto 0;
         }
 
+        body[data-theme="light"] .tag {
+            color: #166534;
+        }
+
         .cert-list .tag {
             font-size: 0.95rem;
             padding: 8px 16px;
@@ -872,10 +1138,17 @@
             }
         }
 
+        @media (max-width: 960px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Print */
         @media print {
             nav, .mobile-menu-btn, .theme-toggle-btn, .cta-buttons, .social-links,
-            .hero-badge, .hero::before, #contact::before {
+            .hero-badge, .hero::before, #contact::before, .terminal, .site-tested,
+            .ci-status, .bug-hunt-toggle, .bug-hunt-panel {
                 display: none !important;
             }
 
@@ -920,7 +1193,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">Danish Ali</div>
+            <div class="logo" data-bug="logo">Danish Ali</div>
             <div class="nav-right">
                 <ul>
                     <li><a href="#now">Now</a></li>
@@ -929,6 +1202,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#publications">Publications</a></li>
+                    <li><a href="./blog/">Writing</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="theme-toggle-btn" id="themeToggle" aria-label="Switch to light theme">🌙</button>
@@ -940,6 +1214,7 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="container">
+            <div class="hero-grid">
             <div class="hero-content">
                 <div class="hero-badge">✓ QA Analyst @ Statflo · Open to opportunities (EST/CT/PST)</div>
                 <h1>Danish Ali</h1>
@@ -964,14 +1239,42 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">3</div>
-                        <div class="stat-label">IEEE Publications</div>
+                        <div class="stat-label" data-bug="stat">IEEE Publications</div>
                     </div>
                 </div>
 
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="https://www.linkedin.com/in/syeddanishdev/" target="_blank" class="btn btn-secondary">LinkedIn →</a>
+                    <a href="#contact" class="btn btn-primary" data-bug="cta">Get In Touch</a>
+                    <a href="https://www.linkedin.com/in/syeddanishdev/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn →</a>
                 </div>
+
+                <div class="site-tested">
+                    <a href="https://github.com/syeddanishdev/syeddanishdev.github.io/actions/workflows/site-tests.yml" target="_blank" rel="noopener">
+                        <img src="https://github.com/syeddanishdev/syeddanishdev.github.io/actions/workflows/site-tests.yml/badge.svg" alt="Site tests CI status" height="20">
+                    </a>
+                    <span>🧪 This site is tested by its own Playwright suite.</span>
+                    <a href="./report/">Live report →</a>
+                    <a href="./lighthouse/">Lighthouse →</a>
+                </div>
+            </div>
+
+            <figure class="terminal" aria-label="Playwright test run summarising my career">
+                <div class="terminal-bar" aria-hidden="true">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">~/career — zsh</span>
+                </div>
+<pre id="terminal"><span class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">npx playwright test --project=career</span></span>
+<span class="t-line t-dim">Running 6 tests using 1 worker</span>
+<span class="t-line"><span class="t-pass">  ✓</span> experience › 9+ years in QA, manual + automation</span>
+<span class="t-line"><span class="t-pass">  ✓</span> statflo › regression pass rate 34% → 100%</span>
+<span class="t-line"><span class="t-pass">  ✓</span> statflo › repo size 26 GB → 80 MB</span>
+<span class="t-line"><span class="t-pass">  ✓</span> servicetitan › post-release issues −25%</span>
+<span class="t-line"><span class="t-pass">  ✓</span> research › 3 IEEE QoMEX papers published</span>
+<span class="t-line"><span class="t-pass">  ✓</span> contact › open to new opportunities</span>
+<span class="t-line t-summary">  6 passed <span class="t-dim">(9+ years)</span> <span class="t-cursor" aria-hidden="true"></span></span></pre>
+            </figure>
             </div>
         </div>
     </div>
@@ -996,6 +1299,25 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Open-source testing frameworks and automation demonstrations</p>
+
+            <div class="ci-status" id="ciStatus">
+                <h3>📡 Live CI status</h3>
+                <p>Latest GitHub Actions run on <code>main</code> for each project, fetched live from the GitHub API.</p>
+                <ul>
+                    <li class="ci-row" data-repo="syeddanishdev.github.io" data-workflow="site-tests.yml">
+                        <a href="https://github.com/syeddanishdev/syeddanishdev.github.io/actions/workflows/site-tests.yml" target="_blank" rel="noopener">This website</a>
+                        <span class="ci-meta"><span class="ci-time"></span><span class="ci-pill" data-state="unknown">checking…</span></span>
+                    </li>
+                    <li class="ci-row" data-repo="ai-playwright-demo" data-workflow="playwright.yml">
+                        <a href="https://github.com/syeddanishdev/ai-playwright-demo/actions/workflows/playwright.yml" target="_blank" rel="noopener">AI Playwright Demo</a>
+                        <span class="ci-meta"><span class="ci-time"></span><span class="ci-pill" data-state="unknown">checking…</span></span>
+                    </li>
+                    <li class="ci-row" data-repo="ai-playwright-genAI" data-workflow="playwright.yml">
+                        <a href="https://github.com/syeddanishdev/ai-playwright-genAI/actions/workflows/playwright.yml" target="_blank" rel="noopener">AI Playwright GenAI</a>
+                        <span class="ci-meta"><span class="ci-time"></span><span class="ci-pill" data-state="unknown">checking…</span></span>
+                    </li>
+                </ul>
+            </div>
 
             <div class="projects-grid">
                 <div class="project-card">
@@ -1102,6 +1424,9 @@
                     <span class="tag">Allure</span>
                     <span class="tag">Slack</span>
                 </div>
+                <a href="./blog/flaky-suite-34-to-100.html" class="project-link">
+                    Read the full write-up →
+                </a>
             </div>
 
             <div class="project-card case-study-card">
@@ -1194,7 +1519,7 @@
     <!-- Experience Section -->
     <section id="experience">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title" data-bug="heading">Professional Experience</h2>
             <p class="section-subtitle">9+ years building quality into software products</p>
 
             <div class="timeline">
@@ -1392,10 +1717,17 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Danish Ali. All rights reserved.</p>
+            <p data-bug="footer">&copy; 2026 Danish Ali. All rights reserved.</p>
             <p style="margin-top: 10px;">QA Engineer | Manual &amp; Automation | CI/CD | AI-Assisted Test Automation</p>
         </div>
     </footer>
+
+    <button class="bug-hunt-toggle" id="bugHuntToggle" aria-expanded="false" aria-controls="bugHuntPanel">🐞 Bug hunt</button>
+    <div class="bug-hunt-panel" id="bugHuntPanel" hidden>
+        <strong>QA challenge:</strong> I've just planted 5 bugs on this page. Click each one you spot.
+        <span class="bug-count" id="bugCount" aria-live="polite">0 / 5 found</span>
+        <span id="bugHuntDone" hidden>🎉 All 5 found. You'd fit right in on a QA team. <a href="#contact">Let's talk →</a></span>
+    </div>
 
     <script>
         // Theme toggle (persisted)
@@ -1462,6 +1794,158 @@
                 revealPhone();
             }
         });
+
+        // Hero terminal typing (skipped for reduced motion)
+        var terminalLines = document.querySelectorAll('#terminal .t-line');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!reduceMotion) {
+            terminalLines.forEach(function(line, i) {
+                if (i > 0) line.classList.add('t-hidden');
+            });
+            var nextLine = 1;
+            var typer = setInterval(function() {
+                if (nextLine >= terminalLines.length) {
+                    clearInterval(typer);
+                    return;
+                }
+                terminalLines[nextLine].classList.remove('t-hidden');
+                nextLine++;
+            }, 450);
+        }
+
+        // Live CI status from the public GitHub API
+        function timeAgo(iso) {
+            var seconds = Math.round((Date.now() - new Date(iso).getTime()) / 1000);
+            var units = [['year', 31536000], ['month', 2592000], ['day', 86400], ['hour', 3600], ['minute', 60]];
+            for (var i = 0; i < units.length; i++) {
+                var n = Math.floor(seconds / units[i][1]);
+                if (n >= 1) return n + ' ' + units[i][0] + (n > 1 ? 's' : '') + ' ago';
+            }
+            return 'just now';
+        }
+
+        function runState(run) {
+            if (run.status !== 'completed') return 'running';
+            return run.conclusion === 'success' ? 'passing' : 'failing';
+        }
+
+        document.querySelectorAll('.ci-row').forEach(function(row) {
+            var pill = row.querySelector('.ci-pill');
+            var time = row.querySelector('.ci-time');
+            var url = 'https://api.github.com/repos/syeddanishdev/' + row.dataset.repo +
+                '/actions/workflows/' + row.dataset.workflow + '/runs?branch=main&per_page=1';
+
+            fetch(url)
+                .then(function(res) {
+                    if (!res.ok) throw new Error(res.status);
+                    return res.json();
+                })
+                .then(function(data) {
+                    var run = data.workflow_runs && data.workflow_runs[0];
+                    if (!run) throw new Error('no runs');
+                    var state = runState(run);
+                    pill.dataset.state = state;
+                    pill.textContent = state;
+                    time.textContent = timeAgo(run.updated_at);
+                    row.querySelector('a').href = run.html_url;
+                })
+                .catch(function() {
+                    pill.dataset.state = 'unknown';
+                    pill.textContent = 'unavailable';
+                });
+        });
+
+        // Bug hunt game
+        var bugs = {
+            logo: function(el) { el.textContent = 'Danish Alli'; },
+            stat: function(el) { el.textContent = 'IEEE Publcations'; },
+            cta: function(el) { el.classList.add('bug-tilt'); },
+            heading: function(el) { el.textContent = 'Professional Experiance'; },
+            footer: function(el) { el.innerHTML = '&copy; 2062 Danish Ali. All rights reserved.'; }
+        };
+        var bugTargets = document.querySelectorAll('[data-bug]');
+        var bugToggle = document.getElementById('bugHuntToggle');
+        var bugPanel = document.getElementById('bugHuntPanel');
+        var bugCount = document.getElementById('bugCount');
+        var bugDone = document.getElementById('bugHuntDone');
+        var originals = [];
+        var found = 0;
+
+        function startBugHunt() {
+            found = 0;
+            originals = [];
+            bugTargets.forEach(function(el) {
+                originals.push({ el: el, html: el.innerHTML, className: el.className });
+                bugs[el.dataset.bug](el);
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', 'Report bug: ' + el.textContent.trim());
+            });
+            document.body.classList.add('bug-hunt');
+            updateBugCount();
+        }
+
+        function stopBugHunt() {
+            originals.forEach(function(o) {
+                o.el.innerHTML = o.html;
+                o.el.className = o.className;
+                o.el.removeAttribute('tabindex');
+                o.el.removeAttribute('role');
+                o.el.removeAttribute('aria-label');
+            });
+            document.body.classList.remove('bug-hunt');
+        }
+
+        function updateBugCount() {
+            bugCount.textContent = found + ' / ' + bugTargets.length + ' found';
+            bugDone.hidden = found < bugTargets.length;
+        }
+
+        function reportBug(el) {
+            if (el.classList.contains('bug-found')) return;
+            el.classList.add('bug-found');
+            found++;
+            updateBugCount();
+        }
+
+        bugToggle.addEventListener('click', function() {
+            var active = document.body.classList.contains('bug-hunt');
+            if (active) {
+                stopBugHunt();
+            } else {
+                startBugHunt();
+            }
+            bugPanel.hidden = active;
+            bugToggle.setAttribute('aria-expanded', String(!active));
+            bugToggle.textContent = active ? '🐞 Bug hunt' : '✕ End bug hunt';
+        });
+
+        bugTargets.forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                if (!document.body.classList.contains('bug-hunt')) return;
+                e.preventDefault();
+                reportBug(el);
+            });
+            el.addEventListener('keydown', function(e) {
+                if (!document.body.classList.contains('bug-hunt')) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    reportBug(el);
+                }
+            });
+        });
+
+        // Hello, fellow inspector
+        console.log(
+            '%c👋 Inspecting my site? You\'re my kind of person.',
+            'color: #22c55e; font-size: 16px; font-weight: 700;'
+        );
+        console.log(
+            'This page is covered by its own Playwright suite (links, axe accessibility, visual regression, Lighthouse).\n' +
+            'Live report: https://syeddanishdev.github.io/report/\n' +
+            'Try the 🐞 Bug hunt button, or say hi: syeddanishdev@gmail.com'
+        );
     </script>
 </body>
 </html>

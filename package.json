@@ -1,0 +1,19 @@
+{
+  "name": "syeddanishdev-site",
+  "private": true,
+  "description": "Portfolio site plus the Playwright suite that tests it",
+  "scripts": {
+    "serve": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "test": "playwright test",
+    "test:update-snapshots": "playwright test tests/visual.spec.ts --update-snapshots",
+    "lighthouse": "lhci autorun",
+    "report": "allure generate allure-results -o allure-report --clean && allure open allure-report"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.63.0",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.13.0"
+  }
+}

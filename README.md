@@ -78,3 +78,26 @@ Master of Science in Computer Science → Technische Universität Berlin
 Bachelor of Science in Computer Science → National College of Business Administration & Economics, Lahore
 
 Languages: English (native), German (basic)
+
+---
+
+### How this site is tested
+This portfolio is covered by its own Playwright suite, run by [Site tests](.github/workflows/site-tests.yml) on every push and nightly:
+
+- **Interactions:** theme toggle, mobile menu, phone reveal, hero terminal, live CI status panel, bug hunt game
+- **Accessibility:** axe-core WCAG 2.1 A/AA scans in dark, light, and bug-hunt modes
+- **Visual regression:** full-page screenshots at desktop and mobile widths
+- **Links:** every internal anchor and external link must resolve
+- **Lighthouse CI:** accessibility score of 95+ is enforced
+
+Results are published with the site: [Allure report](https://syeddanishdev.github.io/report/) · [Lighthouse](https://syeddanishdev.github.io/lighthouse/)
+
+```bash
+npm ci
+npx playwright install chromium
+npm test                        # full suite
+npm run test:update-snapshots   # refresh local visual baselines
+npm run lighthouse              # Lighthouse CI
+```
+
+Linux visual baselines are generated in CI: run the workflow manually with **update_snapshots** checked.

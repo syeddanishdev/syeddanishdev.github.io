@@ -1,0 +1,10 @@
+node_modules/
+test-results/
+playwright-report/
+allure-results/
+allure-report/
+.lighthouseci/
+lighthouse-report/
+_site/
+tests/__screenshots__/darwin/
+tests/__screenshots__/win32/
