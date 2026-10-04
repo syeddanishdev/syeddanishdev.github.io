@@ -5,7 +5,7 @@
       "startServerReadyPattern": "Serving HTTP",
       "url": [
         "http://127.0.0.1:4174/",
-        "http://127.0.0.1:4174/blog/flaky-suite-34-to-100.html"
+        "http://127.0.0.1:4174/blog/flaky-test-habits.html"
       ],
       "numberOfRuns": 1,
       "settings": {

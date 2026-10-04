@@ -175,10 +175,12 @@ test('page loads without script errors', async ({ page }) => {
     expect(errors).toEqual([]);
 });
 
-test('case study links through to the write-up', async ({ page }) => {
-    await openHome(page);
-    await page.getByRole('link', { name: 'Read the full write-up →' }).click();
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('How I took a flaky regression suite from 34% to 100%');
+test('writing section links through to the post and back', async ({ page }) => {
+    await page.goto('/blog/');
+    await page.getByRole('link', { name: /Five habits/ }).click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Five habits for turning a flaky test suite into a trusted one');
     await page.getByRole('link', { name: 'All writing' }).click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Writing');
+    await page.getByRole('link', { name: '← Danish Ali' }).click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Danish Ali');
 });

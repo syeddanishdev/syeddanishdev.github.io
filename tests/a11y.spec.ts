@@ -29,7 +29,7 @@ test('home page with bug hunt active has no WCAG A/AA violations', async ({ page
     await expectNoViolations(page);
 });
 
-for (const path of ['/blog/', '/blog/flaky-suite-34-to-100.html']) {
+for (const path of ['/blog/', '/blog/flaky-test-habits.html']) {
     test(`${path} has no WCAG A/AA violations`, async ({ page }) => {
         await page.goto(path);
         await expectNoViolations(page);

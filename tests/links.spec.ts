@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const PAGES = ['/', '/blog/', '/blog/flaky-suite-34-to-100.html'];
+const PAGES = ['/', '/blog/', '/blog/flaky-test-habits.html'];
 
 const DEPLOY_ONLY_PATHS = ['/report/', '/lighthouse/'];
 

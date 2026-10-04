@@ -1288,7 +1288,7 @@
             <div class="project-card now-card">
                 <div class="project-icon">🔭</div>
                 <h3>Production QA at Statflo + AI-assisted automation</h3>
-                <p>Owning Statflo's Playwright/TypeScript regression suite end to end: CI pipelines in GitHub Actions, Allure trend reporting, and Slack alerts that tell the team within minutes whether a release is healthy.</p>
+                <p>Owning a Playwright/TypeScript end-to-end suite at Statflo, along with its GitHub Actions pipelines, Allure reporting, and Slack regression notifications.</p>
                 <p>On the side, I'm still exploring how AI coding agents can speed up test authoring and flaky-test diagnosis without lowering the bar on reviewable, maintainable test code.</p>
             </div>
         </div>
@@ -1415,8 +1415,8 @@
                 <div class="project-icon">🛠️</div>
                 <h3>Case Study: Stabilizing a Production Regression Suite (Statflo)</h3>
                 <p><strong>Problem:</strong> The end-to-end regression suite was passing only 34% of the time, so a red run said nothing about whether the release was actually broken.</p>
-                <p><strong>Approach:</strong> Traced failures to their real causes (race conditions, timeouts, shared test data) instead of adding retries, then added configurable parallel worker scaling (1–6) in CI, Allure history reporting on GitHub Pages, Slack run summaries, and spec-level test contracts enforced in CI to stop documentation drift.</p>
-                <p><strong>Result:</strong> Pass rate went from 34% to 100% with no known flaky tests, and the repository shrank by 99.7% (26 GB → 80 MB), which made pipeline clones and checkouts much faster.</p>
+                <p><strong>Approach:</strong> Resolved race conditions and timeouts, added configurable parallel worker scaling (1–6) in CI, built Allure reporting with historical trends and automated Slack regression reports, and wrote spec-level test contracts enforced in CI to prevent documentation drift.</p>
+                <p><strong>Result:</strong> Regression pass rate improved from 34% to 100% with all flaky tests eliminated, and repository size dropped by 99.7% (26 GB → 80 MB), improving pipeline clone and checkout times.</p>
                 <div class="project-tags">
                     <span class="tag">Playwright</span>
                     <span class="tag">TypeScript</span>
@@ -1424,9 +1424,6 @@
                     <span class="tag">Allure</span>
                     <span class="tag">Slack</span>
                 </div>
-                <a href="./blog/flaky-suite-34-to-100.html" class="project-link">
-                    Read the full write-up →
-                </a>
             </div>
 
             <div class="project-card case-study-card">

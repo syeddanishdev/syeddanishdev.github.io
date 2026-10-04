@@ -19,6 +19,6 @@ test('home page (light)', async ({ page }) => {
 });
 
 test('blog post', async ({ page }) => {
-    await page.goto('/blog/flaky-suite-34-to-100.html');
+    await page.goto('/blog/flaky-test-habits.html');
     await expect(page).toHaveScreenshot('blog-post.png', { fullPage: true });
 });

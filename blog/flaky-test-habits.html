@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Five habits for turning a flaky test suite into a trusted one | Danish Ali</title>
+    <meta name="description" content="General lessons on stabilizing Playwright end-to-end suites: classifying failures, avoiding race conditions, isolating test data, and reporting results people read.">
+    <meta property="og:title" content="Five habits for turning a flaky test suite into a trusted one">
+    <meta property="og:description" content="General lessons on stabilizing Playwright end-to-end suites: classifying failures, avoiding race conditions, isolating test data, and reporting results people read.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://syeddanishdev.github.io/blog/flaky-test-habits.html">
+    <link rel="stylesheet" href="../assets/blog.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Five habits for turning a flaky test suite into a trusted one",
+        "author": { "@type": "Person", "name": "Danish Ali", "url": "https://syeddanishdev.github.io/" },
+        "datePublished": "2026-10-03"
+    }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <nav class="top-nav">
+            <a href="../">← Danish Ali</a>
+            <a href="./">All writing</a>
+        </nav>
+
+        <main>
+            <article>
+                <h1>Five habits for turning a flaky test suite into a trusted one</h1>
+                <p class="meta">October 2026 · ~5 min read</p>
+
+                <p>An end-to-end suite that fails at random is worse than no suite at all. Nobody can tell a real regression from noise, so people stop looking, and the suite ends up running out of habit rather than being trusted.</p>
+                <p>Over the years I've worked on several suites like that. Fixing them has rarely come down to one big change. These are the habits that have mattered most, with examples in Playwright.</p>
+
+                <h2>1. "Flaky" is a diagnosis, not an explanation</h2>
+                <p>The easiest thing to do with an intermittent failure is to add a retry and move on. I prefer a simple rule: every failure gets classified before anything changes.</p>
+                <ul>
+                    <li><strong>Test bug:</strong> the test is wrong, racy, or depends on something it doesn't control.</li>
+                    <li><strong>Environment issue:</strong> the network, a third-party service, or a shared environment changing mid-run.</li>
+                    <li><strong>Application bug:</strong> the product really is broken, sometimes only under timing the test happens to hit.</li>
+                </ul>
+                <p>The third category is why retries are risky. An intermittent failure can be a real bug that only shows up under load or unusual timing, and that's exactly what a regression suite is meant to catch.</p>
+
+                <h2>2. Look for "act, then wait" race conditions</h2>
+                <p>One of the most common Playwright patterns I see causing flakiness is an action followed by a wait for the network response it triggers:</p>
+<pre tabindex="0"><code>// Racy: the response can arrive before we start listening
+await page.getByRole('button', { name: 'Save' }).click();
+await page.waitForResponse(r =&gt; r.url().includes('/api/items'));</code></pre>
+                <p>On a fast run, the response lands between those two lines and the wait hangs until it times out. The fix is to start listening <em>before</em> acting:</p>
+<pre tabindex="0"><code>// Safe: the listener exists before the request is sent
+const saved = page.waitForResponse(r =&gt; r.url().includes('/api/items'));
+await page.getByRole('button', { name: 'Save' }).click();
+await saved;</code></pre>
+                <p>The same applies to typing into search fields, dialogs that load data on open, and anything else where the UI starts a request. Once you start looking for this pattern, you tend to find it in many places.</p>
+
+                <h2>3. Parallel workers expose shared test data</h2>
+                <p>Running tests in parallel is the obvious way to speed up a suite, and also the fastest way to find out which tests share data. Two tests editing the same record, or sharing one logged-in session, will pass alone and fail together.</p>
+                <ul>
+                    <li>Each test creates the data it needs, ideally through an API rather than the UI, and cleans up after itself.</li>
+                    <li>Each worker gets its own authenticated session.</li>
+                    <li>Anything that genuinely has to be shared is reset to a known state before and after use.</li>
+                </ul>
+                <p>Making the worker count configurable also helps diagnosis: if a test still fails with a single worker, concurrency isn't the cause.</p>
+
+                <h2>4. Report results people actually read</h2>
+                <p>A green suite isn't much use if nobody sees the result.</p>
+                <ul>
+                    <li><strong>Reports with history</strong> (Allure works well) make trends visible, so a test that fails once in twenty runs stands out.</li>
+                    <li><strong>Short chat notifications</strong> after each run, listing failures and the reason for each, tell the team quickly whether a build is healthy.</li>
+                    <li><strong>A one-line description per spec</strong>, checked in CI, keeps documentation from drifting away from what the tests actually do.</li>
+                </ul>
+
+                <h2>5. Keep CI fast and cheap to run</h2>
+                <p>Large repositories, slow checkouts, and heavyweight setup all make people run CI less often. Frequent runs are how intermittent problems get found, so time spent making the pipeline lean pays for itself.</p>
+
+                <h2>The short version</h2>
+                <div class="callout">
+                    <p>Don't trust a green run until you'd trust a red one. Before tuning anything for speed, make every failure mean something. Then speed it up.</p>
+                </div>
+                <p>If you're working on something similar, I'm happy to compare notes. Reach me on <a href="https://www.linkedin.com/in/syeddanishdev/" target="_blank" rel="noopener">LinkedIn</a> or at <a href="mailto:syeddanishdev@gmail.com">syeddanishdev@gmail.com</a>.</p>
+            </article>
+        </main>
+
+        <footer>&copy; 2026 Danish Ali · <a href="../">Back to portfolio</a></footer>
+    </div>
+    <script src="./theme.js"></script>
+</body>
+</html>
