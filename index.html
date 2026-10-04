@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danish Ali | QA Engineer</title>
-    <meta name="description" content="Danish Ali — QA Engineer & Test Automation Specialist with 8+ years across fintech, gaming, and telecom. Playwright, AI-powered testing, API automation.">
+    <meta name="description" content="Danish Ali — QA Engineer with 9+ years across SaaS, gaming, telecom, and research. Playwright/TypeScript automation, CI/CD in GitHub Actions, Allure reporting, AI-assisted testing.">
     <meta property="og:title" content="Danish Ali | QA Engineer">
-    <meta property="og:description" content="QA Engineer & Test Automation Specialist with 8+ years across fintech, gaming, and telecom. Playwright, AI-powered testing, API automation.">
+    <meta property="og:description" content="QA Engineer with 9+ years across SaaS, gaming, telecom, and research. Playwright/TypeScript automation, CI/CD in GitHub Actions, Allure reporting, AI-assisted testing.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://syeddanishdev.github.io/">
     <meta name="twitter:card" content="summary">
@@ -16,7 +16,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Danish Ali",
-        "jobTitle": "QA Engineer",
+        "jobTitle": "Quality Assurance Analyst",
+        "worksFor": { "@type": "Organization", "name": "Statflo" },
         "url": "https://syeddanishdev.github.io/",
         "email": "mailto:syeddanishdev@gmail.com",
         "address": {
@@ -29,6 +30,7 @@
             "https://www.linkedin.com/in/syeddanishdev/",
             "https://github.com/syeddanishdev"
         ],
+        "knowsAbout": ["Playwright", "TypeScript", "Test Automation", "GitHub Actions", "Allure", "API Testing", "Quality Assurance"],
         "alumniOf": [
             { "@type": "CollegeOrUniversity", "name": "Technische Universität Berlin" },
             { "@type": "CollegeOrUniversity", "name": "National College of Business Administration & Economics" }
@@ -792,6 +794,20 @@
             font-weight: 600;
         }
 
+        .cert-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .cert-list .tag {
+            font-size: 0.95rem;
+            padding: 8px 16px;
+        }
+
         /* Footer */
         footer {
             background: var(--surface);
@@ -925,26 +941,30 @@
     <div class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">✓ Available for Opportunities</div>
+                <div class="hero-badge">✓ QA Analyst @ Statflo · Open to opportunities (EST/CT/PST)</div>
                 <h1>Danish Ali</h1>
-                <p class="tagline">QA Engineer | Test Automation Specialist</p>
+                <p class="tagline">QA Engineer | Manual &amp; Automation | CI/CD | AI-Assisted Test Automation</p>
 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">8+</div>
+                        <div class="stat-number">9+</div>
                         <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">34→100%</div>
+                        <div class="stat-label">Regression Pass Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Less Regression Effort</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Fewer Post-Release Issues</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">3</div>
                         <div class="stat-label">IEEE Publications</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25%</div>
-                        <div class="stat-label">Issue Reduction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50%</div>
-                        <div class="stat-label">Faster Testing</div>
                     </div>
                 </div>
 
@@ -964,8 +984,9 @@
 
             <div class="project-card now-card">
                 <div class="project-icon">🔭</div>
-                <h3>AI-agent-based test authoring</h3>
-                <p>Exploring how LLM-driven agents can turn plain-English acceptance criteria into maintainable Playwright suites, and experimenting with self-healing selectors so tests survive routine UI changes.</p>
+                <h3>Production QA at Statflo + AI-assisted automation</h3>
+                <p>Owning Statflo's Playwright/TypeScript regression suite end to end: CI pipelines in GitHub Actions, Allure trend reporting, and Slack alerts that tell the team within minutes whether a release is healthy.</p>
+                <p>On the side, I'm still exploring how AI coding agents can speed up test authoring and flaky-test diagnosis without lowering the bar on reviewable, maintainable test code.</p>
             </div>
         </div>
     </section>
@@ -1069,6 +1090,21 @@
             </div>
 
             <div class="project-card case-study-card">
+                <div class="project-icon">🛠️</div>
+                <h3>Case Study: Stabilizing a Production Regression Suite (Statflo)</h3>
+                <p><strong>Problem:</strong> The end-to-end regression suite was passing only 34% of the time, so a red run said nothing about whether the release was actually broken.</p>
+                <p><strong>Approach:</strong> Traced failures to their real causes (race conditions, timeouts, shared test data) instead of adding retries, then added configurable parallel worker scaling (1–6) in CI, Allure history reporting on GitHub Pages, Slack run summaries, and spec-level test contracts enforced in CI to stop documentation drift.</p>
+                <p><strong>Result:</strong> Pass rate went from 34% to 100% with no known flaky tests, and the repository shrank by 99.7% (26 GB → 80 MB), which made pipeline clones and checkouts much faster.</p>
+                <div class="project-tags">
+                    <span class="tag">Playwright</span>
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Allure</span>
+                    <span class="tag">Slack</span>
+                </div>
+            </div>
+
+            <div class="project-card case-study-card">
                 <div class="project-icon">📈</div>
                 <h3>Case Study: AI Playwright GenAI</h3>
                 <p><strong>Problem:</strong> Hand-writing and maintaining Playwright scripts for every new scenario slows down regression coverage as a product grows.</p>
@@ -1112,7 +1148,7 @@
                 <div class="skill-category">
                     <h3>⚡ Automation</h3>
                     <ul>
-                        <li>Playwright</li>
+                        <li>Playwright (TypeScript/JavaScript)</li>
                         <li>Selenium & Appium</li>
                         <li>End-to-End Testing</li>
                         <li>Page Object Model</li>
@@ -1124,6 +1160,7 @@
                     <ul>
                         <li>REST & GraphQL</li>
                         <li>Postman & SoapUI</li>
+                        <li>SQL Data Validation</li>
                         <li>Load & Stress Testing</li>
                         <li>Performance Analysis</li>
                     </ul>
@@ -1136,6 +1173,7 @@
                         <li>Charles Proxy & Xcode</li>
                         <li>Jenkins & GitHub Actions</li>
                         <li>GitLab CI/CD</li>
+                        <li>Allure Reporting & Slack Alerts</li>
                     </ul>
                 </div>
 
@@ -1145,7 +1183,8 @@
                         <li>Agile & Scrum</li>
                         <li>CI/CD Integration</li>
                         <li>Shift-left Testing</li>
-                        <li>Test Documentation</li>
+                        <li>Test Documentation & Contracts</li>
+                        <li>Dependency Security Triage</li>
                     </ul>
                 </div>
             </div>
@@ -1156,28 +1195,43 @@
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
-            <p class="section-subtitle">8+ years building quality into software products</p>
+            <p class="section-subtitle">9+ years building quality into software products</p>
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <h3>QA Engineer</h3>
-                    <div class="company">ServiceTitan Technologies</div>
-                    <div class="date">March 2024 - Present</div>
+                    <h3>Quality Assurance Analyst</h3>
+                    <div class="company">Statflo</div>
+                    <div class="date">March 2026 - Present · Toronto, ON</div>
                     <ul>
-                        <li>Execute functional and regression testing for web and mobile modules using POM approach</li>
-                        <li>Develop Playwright automation integrated with GitHub Actions CI/CD and AI testing</li>
-                        <li>Validate APIs and third-party integrations for accurate data flow</li>
-                        <li>Reduced post-release issues by 25% and improved deployment consistency</li>
+                        <li>Own and maintain a Playwright/TypeScript end-to-end suite, raising the regression pass rate from 34% to 100% and eliminating all flaky tests</li>
+                        <li>Fixed race conditions and timeouts, and added configurable parallel worker scaling (1–6) in CI for faster, more stable runs</li>
+                        <li>Design and maintain GitHub Actions pipelines with environment-based triggers, parallel execution, and artifact retention policies</li>
+                        <li>Built Allure reporting with historical trends on GitHub Pages, plus automated Slack regression reports across environments</li>
+                        <li>Reduced repository size by 99.7% (26 GB → 80 MB), speeding up pipeline clones and checkouts</li>
+                        <li>Wrote spec-level test contracts for 100% of the suite, enforced in CI to prevent documentation drift</li>
+                        <li>Manual functional, regression, smoke, and exploratory testing of web apps and REST APIs, with SQL-based data checks; triaged dependency vulnerabilities (SSRF, prototype pollution)</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>QA Engineer</h3>
+                    <div class="company">ServiceTitan</div>
+                    <div class="date">March 2024 - March 2026 · Toronto, ON</div>
+                    <ul>
+                        <li>Designed and executed manual test cases for cross-platform scheduling, dispatch, invoicing, and mobile field operations</li>
+                        <li>Built and maintained Playwright end-to-end suites, cutting regression effort by 50%</li>
+                        <li>Validated third-party API integrations with Postman and SoapUI</li>
+                        <li>Reduced post-deployment issues by 25%, increasing release confidence for weekly rollouts</li>
                     </ul>
                 </div>
 
                 <div class="timeline-item">
                     <h3>QA Engineer</h3>
                     <div class="company">Unity Technologies</div>
-                    <div class="date">June 2021 - March 2024</div>
+                    <div class="date">June 2021 - March 2024 · Montreal, QC</div>
                     <ul>
-                        <li>Executed comprehensive testing for Unity Play, Struckd Web, and Struckd Mobile</li>
-                        <li>Designed and maintained automated test scripts using Playwright</li>
+                        <li>Executed comprehensive testing for Unity Play, Struckd Studio Web, and the Struckd app</li>
+                        <li>Built and maintained test scripts for game mechanics and UI validation using internal automation frameworks</li>
                         <li>Conducted performance analysis with Unity Profiler, identifying critical bottlenecks</li>
                         <li>Strengthened release quality by detecting critical issues early in development</li>
                     </ul>
@@ -1185,8 +1239,8 @@
 
                 <div class="timeline-item">
                     <h3>QA Tester</h3>
-                    <div class="company">T-Mobile Telekom Innovation Lab</div>
-                    <div class="date">October 2018 - May 2021</div>
+                    <div class="company">T-Labs, Telekom Innovation Laboratories</div>
+                    <div class="date">October 2018 - May 2021 · Berlin, Germany</div>
                     <ul>
                         <li>Tested mobile apps and VR/AR prototypes with structured test plans</li>
                         <li>Automated core scenarios for improved repeatability and efficiency</li>
@@ -1197,7 +1251,7 @@
                 <div class="timeline-item">
                     <h3>QA Analyst</h3>
                     <div class="company">Raptor Interactive</div>
-                    <div class="date">March 2015 - April 2017</div>
+                    <div class="date">March 2015 - April 2017 · Pakistan</div>
                     <ul>
                         <li>Tested mobile games for gameplay flow, monetization, and network stability</li>
                         <li>Used Appium to automate key smoke tests and device-compatibility checks</li>
@@ -1209,7 +1263,7 @@
                 <div class="timeline-item">
                     <h3>Jr QA Tester</h3>
                     <div class="company">SATISTRUM</div>
-                    <div class="date">January 2014 - February 2015</div>
+                    <div class="date">January 2014 - February 2015 · Lahore, Pakistan</div>
                     <ul>
                         <li>Tested early-stage Android and web applications and documented defects in Jira</li>
                         <li>Proposed automation for repetitive regression scenarios to improve team efficiency</li>
@@ -1223,20 +1277,30 @@
     <!-- Education Section -->
     <section id="education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <p class="section-subtitle">Academic foundation in Computer Science</p>
+            <h2 class="section-title">Education &amp; Certifications</h2>
+            <p class="section-subtitle">Computer Science degrees and professional certifications</p>
 
             <div class="education-grid">
                 <div class="education-card">
                     <div class="education-icon">🎓</div>
                     <h3>Master of Computer Science</h3>
                     <p class="institution">Technische Universität Berlin</p>
+                    <p class="date" style="color: var(--text-muted); margin-top: 8px;">2017 - 2021</p>
                 </div>
                 <div class="education-card">
                     <div class="education-icon">🎓</div>
                     <h3>Bachelor of Computer Science</h3>
                     <p class="institution">National College of Business Administration & Economics</p>
+                    <p class="date" style="color: var(--text-muted); margin-top: 8px;">2010 - 2014</p>
                 </div>
+            </div>
+
+            <div class="cert-list" aria-label="Certifications">
+                <span class="tag">Playwright JS/TS Automation Testing from Scratch &amp; Framework</span>
+                <span class="tag">Global Privacy and Data Protection (GDPR)</span>
+                <span class="tag">California Consumer Privacy Act</span>
+                <span class="tag">Security Awareness Fundamentals</span>
+                <span class="tag">Android Development</span>
             </div>
         </div>
     </section>
@@ -1329,7 +1393,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Danish Ali. All rights reserved.</p>
-            <p style="margin-top: 10px;">QA Engineer | Test Automation Specialist</p>
+            <p style="margin-top: 10px;">QA Engineer | Manual &amp; Automation | CI/CD | AI-Assisted Test Automation</p>
         </div>
     </footer>
 
